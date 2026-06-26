@@ -1,0 +1,8 @@
+language: c++
+primary_contact: traceweft-maintainers@example.invalid
+fuzz_targets:
+  - trace_reader_fuzzer
+  - frame_fuzzer
+  - query_fuzzer
+  - schema_fuzzer
+  - codec_fuzzer
