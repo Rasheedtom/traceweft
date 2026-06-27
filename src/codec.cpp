@@ -39,6 +39,12 @@ std::vector<uint8_t> DecodeRle(const std::vector<uint8_t>& input){
  std::vector<uint8_t> out;
  while(!r.empty()){
  uint8_t count=r.readU8();
+ if(count==0){
+ uint64_t extended=r.readU64();
+ uint8_t value=r.readU8();
+ out.insert(out.end(), static_cast<size_t>(extended), value);
+ continue;
+ }
  uint8_t value=r.readU8();
  out.insert(out.end(), count, value);
  }

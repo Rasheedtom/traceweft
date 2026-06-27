@@ -1,6 +1,6 @@
 # TraceWeft
 
-TraceWeft is a small offline trace log utility for teams that collect application events from batch jobs, local services, and embedded gateways. It stores event records in a compact `.twft` container and provides tools to inspect, verify, query, compact, classify, and export those traces without a database server. TraceWeft also ships with a built-in event catalog for common batch, gateway, storage, queue, and worker events so local triage reports can label records consistently even when a central observability service is unavailable.
+TraceWeft is an offline trace log utility for teams that collect application events from batch jobs, local services, and embedded gateways. It stores event records in a compact `.twft` container and provides tools to inspect, verify, query, compact, classify, and export those traces without a database server. TraceWeft also ships with a built-in event catalog for common batch, gateway, storage, queue, and worker events so local triage reports can label records consistently even when a central observability service is unavailable.
 
 The command line program is `twft`.
 
@@ -39,3 +39,5 @@ ctest --test-dir build --output-on-failure
 ## License
 
 MIT.
+
+TraceWeft stores event payloads with one of four codecs: raw bytes, run-length encoding, XOR-delta streams, or PackBits-style literals. RLE payloads use short runs for compact telemetry and may include extended runs emitted by older collectors for repeated status bytes.
